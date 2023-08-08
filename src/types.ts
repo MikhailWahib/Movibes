@@ -13,3 +13,10 @@ export interface Movie {
 	poster: string
 	trailer: string
 }
+
+export interface User {
+	id: string
+	firstName: string
+	lastName: string
+	favorites: string[]
+}
