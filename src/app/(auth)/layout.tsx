@@ -6,11 +6,6 @@ import logo from '../../../public/Logo.svg'
 import Poster from './(components)/Poster'
 
 import { Movie } from '@/types'
-import { cache } from 'react'
-
-export const metadata: Metadata = {
-	title: 'Movibes | Login',
-}
 
 const getRandomMovieData = async (): Promise<Movie | undefined> => {
 	try {
@@ -19,7 +14,6 @@ const getRandomMovieData = async (): Promise<Movie | undefined> => {
 			cache: 'no-cache',
 		})
 		const data = await res.json()
-		console.log('Fetch..........')
 		return data
 	} catch (error) {
 		console.log(error)
