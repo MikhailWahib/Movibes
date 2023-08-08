@@ -1,13 +1,38 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+
 import logo from '../../../public/Logo.svg'
+import Poster from './(components)/Poster'
+
+import { Movie } from '@/types'
+import { cache } from 'react'
 
 export const metadata: Metadata = {
 	title: 'Movibes | Login',
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const getRandomMovieData = async (): Promise<Movie | undefined> => {
+	try {
+		const res = await fetch(`${process.env.API_URL}/movies/random`, {
+			// Adding no cache to get a new movie every time
+			cache: 'no-cache',
+		})
+		const data = await res.json()
+		console.log('Fetch..........')
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export default async function Layout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
+	const movie = await getRandomMovieData()
+
 	return (
 		<main className='min-h-screen text-[#fefefe] overflow-hidden'>
 			<div className='absolute top-5 left-6 md:top-12 md:left-16 z-50'>
@@ -18,33 +43,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<div className='flex'>
 				{children}
 				{/* POSTER SECTION */}
-				<div className='hidden md:block relative login__poster h-screen flex-[55%]'>
-					<div className='absolute flex w-full bottom-0 h-[210px] pt-6 px-7 bg-[#19191908] backdrop-filter backdrop-blur-[2px] transition-all duration-500 translate-y-[0%]'>
-						<div className='flex-1'>
-							<h2 className='text-4xl font-semibold mb-1'>Top Gun: Maverick</h2>
-							<p className='text-xl'>2022 | PG-13 | 2h 10m</p>
-							<p className='text-xl mt-4'>Genres : Action , Drama</p>
-						</div>
-						<div className='flex-shrink-1'>
-							<div className='flex items-center gap-2'>
-								<Image
-									src='/imdbLogo.png'
-									width={50}
-									height={50}
-									alt='IMDB Logo'
-								/>
-								<Image
-									src='/star.png'
-									width={20}
-									height={20}
-									alt='Star vector'
-									className='h-[20px] w-[20px]'
-								/>
-								<p className='font-semibold'>8.5 / 10</p>
-							</div>
-						</div>
-					</div>
-				</div>
+				<Poster movie={movie} />
 			</div>
 		</main>
 	)
