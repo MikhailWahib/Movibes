@@ -18,7 +18,7 @@ const Poster = async ({ movie }: Props) => {
 		>
 			<div className='absolute flex w-full bottom-0 h-[210px] pt-6 px-7 bg-[#19191908] backdrop-filter backdrop-blur-[2px] transition-all duration-500 translate-y-[0]'>
 				<div className='flex-1'>
-					<h2 className='text-4xl font-semibold mb-1 text-yellow-500 shadow-lg'>
+					<h2 className='text-4xl font-semibold mb-1 text-yellow-500 '>
 						{movie?.title}
 					</h2>
 					<p className='text-xl'>{`${movie?.year} | ${movie?.rate} | ${movie?.duration}`}</p>
