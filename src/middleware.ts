@@ -5,10 +5,14 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
 	let cookie = request.cookies.get('jwt')
 
+	if (request.nextUrl.pathname === '/') {
+		return NextResponse.redirect(new URL('/home', request.url))
+	}
+
 	if (!cookie && request.nextUrl.pathname !== '/login') {
 		return NextResponse.redirect(new URL('/login', request.url))
 	} else if (cookie && request.nextUrl.pathname !== '/') {
-		return NextResponse.redirect(new URL('/', request.url))
+		return NextResponse.redirect(new URL('/home', request.url))
 	}
 }
 
