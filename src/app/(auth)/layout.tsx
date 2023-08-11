@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import logo from '../../../public/Logo.svg'
-import Poster from './(components)/Poster'
+import Poster from './components/Poster'
 
 import { Movie } from '@/types'
 
