@@ -10,11 +10,13 @@ import logo from '../../../public/movibesLogo.svg'
 import { AiOutlineHome } from 'react-icons/ai'
 import { BiCameraMovie } from 'react-icons/bi'
 import { MdOutlineUpcoming } from 'react-icons/md'
+import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
 	{ name: 'Movies', href: '/movies', icon: BiCameraMovie },
+	{ name: 'Tv Shows', href: '/tv-shows', icon: BiSlideshow },
 	{ name: 'Upcoming', href: '/upcoming', icon: MdOutlineUpcoming },
 ]
 
