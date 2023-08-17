@@ -4,7 +4,8 @@ import { useState } from 'react'
 
 import Image from 'next/image'
 import Searchbar from './Searchbar'
-import avatarImg from '../../../public/avatarImg.jpg'
+// import avatarImg from '../../../public/avatarImg.jpg'
+import { RxAvatar } from 'react-icons/rx'
 import { BiSolidBellRing } from 'react-icons/bi'
 
 const Topbar = () => {
@@ -30,7 +31,8 @@ const Topbar = () => {
 					</div>
 				</button>
 				<div className='relative h-[40px] w-[40px] bg-[#212121] rounded-full overflow-clip'>
-					<Image src={avatarImg} width={40} height={40} alt='Avatar' />
+					{/* <Image src={avatarImg} width={40} height={40} alt='Avatar' /> */}
+					<RxAvatar size='fill' opacity={0.8} />
 				</div>
 			</div>
 		</div>

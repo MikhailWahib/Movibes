@@ -7,11 +7,11 @@ export default function HomeLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<div className='flex min-h-screen text-white'>
+		<div className='flex min-h-screen w-full text-white'>
 			<Sidebar />
-			<div className='flex-1 mx-11 mt-9'>
+			<div className='flex-1 pl-64 pr-11 overflow-x-hidden mt-9'>
 				<Topbar />
-				{children}
+				<main className='py-5'>{children}</main>
 			</div>
 		</div>
 	)

@@ -9,11 +9,11 @@ export function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL('/home', request.url))
 	}
 
-	if (!cookie && request.nextUrl.pathname !== '/login') {
-		return NextResponse.redirect(new URL('/login', request.url))
-	} else if (cookie && request.nextUrl.pathname !== '/') {
-		return NextResponse.redirect(new URL('/home', request.url))
-	}
+	// if (!cookie && request.nextUrl.pathname !== '/login') {
+	// 	return NextResponse.redirect(new URL('/login', request.url))
+	// } else if (cookie && request.nextUrl.pathname !== '/') {
+	// 	return NextResponse.redirect(new URL('/home', request.url))
+	// }
 }
 
 // See "Matching Paths" below to learn more

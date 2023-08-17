@@ -11,7 +11,7 @@ const Searchbar = (props: Props) => {
 			<input
 				type='text'
 				className='h-[35px] w-full bg-[#212121] rounded-3xl text-sm pl-11 placeholder:opacity-70'
-				placeholder='Search for movies'
+				placeholder='Search for movies, TV shows...'
 			/>
 		</div>
 	)

@@ -2,10 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --scrollbar-thumb-color: #3dd2ccbf;
+    --scrollbar-track-color: #212121;
+}
+
+
 html {
     font-size: 16px;
 }
 
 body {
     background-color: #191919;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+    border-radius: 9999px; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-color);
 }

@@ -28,7 +28,7 @@ const Sidebar = () => {
 		setActiveRoute(path)
 	}, [path])
 	return (
-		<div className='relative w-56 rounded-tr-[45px] rounded-br-[45px] bg-[#212121] text-lg font-medium text-[#666]'>
+		<div className='fixed z-50 h-full w-56 rounded-tr-[45px] rounded-br-[45px] bg-[#212121] text-lg font-medium text-[#666]'>
 			<div className='mx-11 mt-10 mb-20'>
 				<Link href='/'>
 					<Image src={logo} height={118} width={118} alt='Movibes Logo' />
