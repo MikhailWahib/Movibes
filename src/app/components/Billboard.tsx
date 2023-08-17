@@ -18,7 +18,7 @@ const Billboard = async () => {
 	const movie = await getMovie()
 
 	return (
-		<div className='relative h-[20vw] flex w-full rounded-2xl overflow-hidden z-0'>
+		<div className='relative h-[30vw] md:h-[25vw] flex w-full rounded-2xl overflow-hidden z-0'>
 			<div className='absolute inset-0'>
 				<Image
 					src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/original${movie?.backdrop_path}`}
