@@ -12,7 +12,7 @@ import { BiCameraMovie } from 'react-icons/bi'
 import { MdOutlineUpcoming } from 'react-icons/md'
 import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
-import { SidebarContext } from '@/providers/SidebarProvider'
+import { SidebarContext } from '@/providers/SidebarContext'
 
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },

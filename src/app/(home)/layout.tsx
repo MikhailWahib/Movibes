@@ -1,7 +1,7 @@
 import Sidebar from '../components/Sidebar'
 import Topbar from '../components/Topbar'
 
-import { SidebarProvider } from '@/providers/SidebarProvider'
+import { SidebarProvider } from '@/providers/SidebarContext'
 
 export default function HomeLayout({
 	children,

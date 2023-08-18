@@ -8,7 +8,7 @@ import Searchbar from './Searchbar'
 import { RxAvatar } from 'react-icons/rx'
 import { BiSolidBellRing } from 'react-icons/bi'
 import { BiMenuAltLeft } from 'react-icons/bi'
-import { SidebarContext } from '@/providers/SidebarProvider'
+import { SidebarContext } from '@/providers/SidebarContext'
 
 const Topbar = () => {
 	const [openNotifications, setOpenNotifications] = useState(false)
