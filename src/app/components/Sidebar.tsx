@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -12,6 +12,7 @@ import { BiCameraMovie } from 'react-icons/bi'
 import { MdOutlineUpcoming } from 'react-icons/md'
 import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
+import { SidebarContext } from '@/providers/SidebarProvider'
 
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
@@ -20,14 +21,11 @@ const listItems = [
 	{ name: 'Upcoming', href: '/upcoming', icon: MdOutlineUpcoming },
 ]
 
-type Props = {
-	openSidebar: boolean
-	setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const Sidebar = ({ openSidebar, setOpenSidebar }: Props) => {
+const Sidebar = () => {
 	const path = usePathname()
 	const [activeRoute, setActiveRoute] = useState(path)
+
+	const { openSidebar, setOpenSidebar }: any = useContext(SidebarContext)
 
 	useEffect(() => {
 		setActiveRoute(path)
@@ -38,14 +36,14 @@ const Sidebar = ({ openSidebar, setOpenSidebar }: Props) => {
 			<div
 				className={`${
 					openSidebar ? 'block' : 'hidden'
-				} md:hidden absolute inset-0 w-full h-full bg-black/50 z-40 transition-all`}
+				} md:hidden fixed inset-0 w-full h-full bg-black/50 z-40 overflow-clip transition-all`}
 				onClick={() => setOpenSidebar(false)}
 			></div>
 
 			<div
 				className={`${
 					openSidebar ? 'translate-x-0' : '-translate-x-[100%]'
-				} md:translate-x-0 absolute inset-0 md:fixed h-full w-56 md:rounded-tr-[45px] md:rounded-br-[45px] bg-[#212121] text-lg font-medium text-[#666] z-50 transition-all`}
+				} fixed inset-0 md:translate-x-0  h-full w-56 md:rounded-tr-[45px] md:rounded-br-[45px] bg-[#212121] text-lg font-medium text-[#666] z-50 transition-all`}
 			>
 				<div className='mx-11 mt-10 mb-20'>
 					<Link href='/'>

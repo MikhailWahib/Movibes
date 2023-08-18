@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 import Image from 'next/image'
 import Searchbar from './Searchbar'
@@ -8,14 +8,12 @@ import Searchbar from './Searchbar'
 import { RxAvatar } from 'react-icons/rx'
 import { BiSolidBellRing } from 'react-icons/bi'
 import { BiMenuAltLeft } from 'react-icons/bi'
+import { SidebarContext } from '@/providers/SidebarProvider'
 
-type Props = {
-	openSidebar: boolean
-	setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const Topbar = ({ openSidebar, setOpenSidebar }: Props) => {
+const Topbar = () => {
 	const [openNotifications, setOpenNotifications] = useState(false)
+
+	const { openSidebar, setOpenSidebar }: any = useContext(SidebarContext)
 
 	return (
 		<div className='w-full flex items-center justify-between'>
