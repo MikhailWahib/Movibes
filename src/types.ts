@@ -69,9 +69,9 @@ export interface ShowDetailsResponse {
 	vote_count: number
 }
 
-export interface User {
-	id: string
-	firstName: string
-	lastName: string
-	favorites: string[]
+export type ApiDiscoverResponse = {
+	page: number
+	results: ShowDiscoverResponse[]
+	total_pages: number
+	total_results: number
 }

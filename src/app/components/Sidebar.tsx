@@ -16,7 +16,7 @@ import { SidebarContext } from '@/providers/SidebarContext'
 
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
-	{ name: 'Movies', href: '/movies', icon: BiCameraMovie },
+	{ name: 'Movies', href: '/movies?category=discover', icon: BiCameraMovie },
 	{ name: 'Tv Shows', href: '/tv-shows', icon: BiSlideshow },
 	{ name: 'Upcoming', href: '/upcoming', icon: MdOutlineUpcoming },
 ]
@@ -55,7 +55,7 @@ const Sidebar = () => {
 						<li
 							key={i}
 							className={`h-20 pl-11 relative transition-all hover:text-[#3DD2CC] ${
-								activeRoute === item.href
+								item.href.startsWith(activeRoute)
 									? 'bg-[#3dd2cc66] text-[#3DD2CC]'
 									: 'bg-none'
 							}`}
@@ -64,16 +64,12 @@ const Sidebar = () => {
 							<Link
 								href={item.href}
 								className={`h-full w-full flex items-center ${
-									activeRoute === item.href &&
+									item.href.startsWith(activeRoute) &&
 									'after:absolute after:right-0 after:h-full after:w-1 after:bg-[#3dd2ccbf]'
 								}`}
 							>
 								<div className='flex items-center gap-2'>
-									<div
-										className={`${
-											activeRoute === item.href
-										} && 'text-[#3DD2CC]'`}
-									>
+									<div>
 										<item.icon size={20} />
 									</div>
 									{item.name}
