@@ -17,8 +17,12 @@ import { SidebarContext } from '@/providers/SidebarContext'
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
 	{ name: 'Movies', href: '/movies?category=discover', icon: BiCameraMovie },
-	{ name: 'Tv Shows', href: '/tv-shows', icon: BiSlideshow },
-	{ name: 'Upcoming', href: '/upcoming', icon: MdOutlineUpcoming },
+	{ name: 'Tv Shows', href: '/tv-shows?category=discover', icon: BiSlideshow },
+	{
+		name: 'Upcoming',
+		href: '/upcoming?category=movies',
+		icon: MdOutlineUpcoming,
+	},
 ]
 
 const Sidebar = () => {

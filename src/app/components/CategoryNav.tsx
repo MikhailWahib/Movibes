@@ -1,3 +1,6 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 interface Props {
@@ -6,6 +9,12 @@ interface Props {
 }
 
 const CategoryNav = ({ category, navItems }: Props) => {
+	const pathname = usePathname()
+	console.log(
+		'🚀 ~ file: CategoryNav.tsx:13 ~ CategoryNav ~ pathname:',
+		pathname
+	)
+
 	return (
 		<ul className='flex gap-5 w-fit mx-auto md:mx-0'>
 			{navItems.map((item, i) => (
@@ -17,7 +26,9 @@ const CategoryNav = ({ category, navItems }: Props) => {
 							: 'text-[#666666]'
 					} transition-colors`}
 				>
-					<Link href={`/movies/?category=${item.toLowerCase()}`}>{item}</Link>
+					<Link href={`${pathname}?category=${item.toLowerCase()}`}>
+						{item}
+					</Link>
 				</li>
 			))}
 		</ul>
