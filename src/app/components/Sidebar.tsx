@@ -18,11 +18,6 @@ const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
 	{ name: 'Movies', href: '/movies?category=discover', icon: BiCameraMovie },
 	{ name: 'Tv Shows', href: '/tv-shows?category=discover', icon: BiSlideshow },
-	{
-		name: 'Upcoming',
-		href: '/upcoming?category=movies',
-		icon: MdOutlineUpcoming,
-	},
 ]
 
 const Sidebar = () => {
