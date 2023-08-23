@@ -1,14 +1,13 @@
 'use client'
 
 import { useContext, useState } from 'react'
+import { SidebarContext } from '@/providers/SidebarContext'
 
-import Image from 'next/image'
 import Searchbar from './Searchbar'
-// import avatarImg from '../../../public/avatarImg.jpg'
+
 import { RxAvatar } from 'react-icons/rx'
 import { BiSolidBellRing } from 'react-icons/bi'
 import { BiMenuAltLeft } from 'react-icons/bi'
-import { SidebarContext } from '@/providers/SidebarContext'
 
 const Topbar = () => {
 	const [openNotifications, setOpenNotifications] = useState(false)
@@ -16,7 +15,7 @@ const Topbar = () => {
 	const { openSidebar, setOpenSidebar }: any = useContext(SidebarContext)
 
 	return (
-		<div className='w-full flex items-center justify-between'>
+		<div className='w-full flex items-center justify-between gap-[5vw]'>
 			<button
 				onClick={() => setOpenSidebar(!openSidebar)}
 				className='md:hidden'

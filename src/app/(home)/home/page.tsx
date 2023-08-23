@@ -73,12 +73,6 @@ export default async function Page() {
 			<div>
 				<div className='flex justify-between items-center'>
 					<h2>Upcoming</h2>
-					<Link
-						href='/upcoming'
-						className='text-sm text-[#666666] font-medium transition-colors hover:text-[#3DD2CC]'
-					>
-						See all
-					</Link>
 				</div>
 				<Slideshow shows={upcomings} />
 			</div>

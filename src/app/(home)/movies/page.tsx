@@ -6,13 +6,14 @@ import Pagination from '@/app/components/Pagination'
 
 const getMovies = async (
 	category: string,
-	page: string
+	page: string,
+	sort_by: string
 ): Promise<ApiDiscoverResponse> => {
 	const response = api
 		.get(
 			`/${category}/movie${
 				category === 'trending' ? '/day' : ''
-			}?&language=en-US&sort_by=popularity.desc&page=${page}`
+			}?&language=en-US&sort_by=${sort_by}&include_adult=false&page=${page}`
 		)
 		.then((res) => {
 			return res.data
@@ -23,11 +24,23 @@ const getMovies = async (
 interface SearchParams {
 	category: string
 	page: string
+	sort_by: string
 }
 
 const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
-	const data = await getMovies(searchParams.category, searchParams.page || '1')
+	const { category, page, sort_by } = searchParams
 
+	const data = await getMovies(
+		category || 'discover',
+		page || '1',
+		sort_by || 'popularity.desc'
+	)
+
+	console.log(
+		`/${category}/movie${
+			category === 'trending' ? '/day' : ''
+		}?&language=en-US&sort_by=${sort_by}&include_adult=false&page=${page}`
+	)
 	return (
 		<main>
 			<CategoryNav

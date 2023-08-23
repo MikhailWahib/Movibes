@@ -1,10 +1,10 @@
 import { AiOutlineSearch } from 'react-icons/ai'
 
-type Props = {}
+interface Props {}
 
 const Searchbar = (props: Props) => {
 	return (
-		<div className='w-[60%] relative'>
+		<div className='w-full relative'>
 			<div className='absolute top-[9.5px] left-[15px] opacity-70'>
 				<AiOutlineSearch />
 			</div>

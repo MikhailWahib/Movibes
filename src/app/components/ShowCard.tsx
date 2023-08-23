@@ -14,11 +14,17 @@ const ShowCard = ({ show }: Props) => {
 	return (
 		<div className='group relative h-52 min-w-[9rem] sm:min-w-[9.5rem] w-full max-w-[13rem] rounded-lg overflow-hidden'>
 			<Link href='/movie'>
-				<Image
-					src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/w500${show.poster_path}`}
-					fill
-					alt='Poster'
-				/>
+				{show.poster_path ? (
+					<Image
+						src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/w500${show.poster_path}`}
+						fill
+						alt='Poster'
+					/>
+				) : (
+					<div className='absolute top-[40%] left-[30%] text-center'>
+						No Poster
+					</div>
+				)}
 				<div className='absolute top-3 -right-3 pr-4 py-[1px] rounded-2xl text-xs backdrop-filter backdrop-blur-[60px] bg-black/20'>
 					<Image
 						src={starIcon}

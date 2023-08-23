@@ -1,7 +1,8 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Filter from './Filter'
 
 interface Props {
 	category: string
@@ -10,28 +11,34 @@ interface Props {
 
 const CategoryNav = ({ category, navItems }: Props) => {
 	const pathname = usePathname()
-	console.log(
-		'🚀 ~ file: CategoryNav.tsx:13 ~ CategoryNav ~ pathname:',
-		pathname
-	)
+	const searchParams = useSearchParams()
 
 	return (
-		<ul className='flex gap-5 w-fit mx-auto md:mx-0'>
-			{navItems.map((item, i) => (
-				<li
-					key={i}
-					className={`${
-						item.toLowerCase() === category
-							? 'text-[#3DD2CC]'
-							: 'text-[#666666]'
-					} transition-colors`}
-				>
-					<Link href={`${pathname}?category=${item.toLowerCase()}`}>
-						{item}
-					</Link>
-				</li>
-			))}
-		</ul>
+		<div className='flex justify-between items-center'>
+			<nav>
+				<ul className='flex gap-5 w-fit'>
+					{navItems.map((item, i) => (
+						<li
+							key={i}
+							className={`${
+								item.toLowerCase() === category
+									? 'text-[#3DD2CC]'
+									: 'text-[#666666]'
+							} transition-colors`}
+						>
+							<Link href={`${pathname}?category=${item.toLowerCase()}`}>
+								{item}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</nav>
+			{searchParams.get('category') !== 'trending' && (
+				<div>
+					<Filter href={`${pathname}?category=${category}`} />
+				</div>
+			)}
+		</div>
 	)
 }
 
