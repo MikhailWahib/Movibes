@@ -11,9 +11,12 @@ type Props = {
 }
 
 const ShowCard = ({ show }: Props) => {
+	// IF SHOW HAS 'TITLE' THEN IT'S A MOVIE, IF 'NAME' IT'S A TV - "FROM THE API"
+	const href = `/show/${show.id}?show_type=${show.title ? 'movie' : 'tv'}`
+
 	return (
 		<div className='group relative h-52 min-w-[9rem] sm:min-w-[9.5rem] w-full max-w-[13rem] rounded-lg overflow-hidden'>
-			<Link href={`/show/${show.id}`}>
+			<Link href={href}>
 				{show.poster_path ? (
 					<Image
 						src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/w500${show.poster_path}`}

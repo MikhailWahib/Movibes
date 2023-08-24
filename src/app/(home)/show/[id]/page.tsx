@@ -8,10 +8,13 @@ import VideoPlayer from '@/app/components/VideoPlayer'
 
 import { ShowDetails } from '@/types'
 
-const getShow = async (id: number): Promise<ShowDetails | undefined> => {
+const getShow = async (
+	id: number,
+	showType: string
+): Promise<ShowDetails | undefined> => {
 	try {
 		const res = await api.get(
-			`movie/${id}?append_to_response=credits,videos&language=en-US`
+			`${showType}/${id}?append_to_response=credits,videos&language=en-US`
 		)
 		return res.data
 	} catch (error) {
@@ -19,19 +22,46 @@ const getShow = async (id: number): Promise<ShowDetails | undefined> => {
 	}
 }
 
-const Page = async ({ params }: { params: { id: number } }) => {
-	const show = await getShow(params.id)
+interface Props {
+	params: {
+		id: number
+	}
+	searchParams: {
+		show_type: string
+	}
+}
+
+const Page = async ({ params, searchParams }: Props) => {
+	const show = await getShow(params.id, searchParams.show_type)
 
 	return (
 		<main>
-			<VideoPlayer show={show} />
+			<div className='w-full h-[20rem] md:h-[25rem] relative rounded-xl overflow-hidden'>
+				{show?.videos.results[0] ? (
+					<VideoPlayer show={show} />
+				) : (
+					<div className=''>
+						<Image
+							src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/original${show?.backdrop_path}`}
+							fill
+							alt={''}
+						/>
+					</div>
+				)}
+			</div>
 
 			<div className='flex justify-between gap-5 mt-5'>
 				<div className=''>
 					<h2 className='font-bold text-2xl inline-block text-[#3DD2CC] mr-2'>
-						{show?.title}
+						{show?.title || show?.name}
 					</h2>
-					<span>| {Math.floor((show?.runtime! / 60) * 10) / 10} h</span>
+					<span>
+						|{' '}
+						{Math.floor(
+							(((show?.runtime! || show?.episode_run_time!) as any) / 60) * 10
+						) / 10}{' '}
+						h
+					</span>
 				</div>
 
 				<div className='flex items-center gap-2'>

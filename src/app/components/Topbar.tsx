@@ -42,7 +42,7 @@ const Topbar = () => {
 						</p>
 					</div>
 				</button>
-				<div className='rela h-[30px] w-[30px]tive md:h-[40px] md:w-[40px] bg-[#212121] rounded-full overflow-clip'>
+				<div className='relative h-[30px] w-[30px] md:h-[40px] md:w-[40px] bg-[#212121] rounded-full overflow-clip'>
 					<RxAvatar size='fill' opacity={0.8} />
 				</div>
 			</div>
