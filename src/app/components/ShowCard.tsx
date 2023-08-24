@@ -3,17 +3,17 @@ import poster from '../../../public/poster.png'
 import starIcon from '../../../public/star.png'
 import Link from 'next/link'
 
-import { ShowDiscoverResponse } from '@/types'
+import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
 type Props = {
-	show: ShowDiscoverResponse
+	show: ShowDiscover
 }
 
 const ShowCard = ({ show }: Props) => {
 	return (
 		<div className='group relative h-52 min-w-[9rem] sm:min-w-[9.5rem] w-full max-w-[13rem] rounded-lg overflow-hidden'>
-			<Link href='/movie'>
+			<Link href={`/show/${show.id}`}>
 				{show.poster_path ? (
 					<Image
 						src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/w500${show.poster_path}`}

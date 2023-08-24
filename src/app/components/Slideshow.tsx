@@ -1,9 +1,9 @@
 import ShowCard from './ShowCard'
 
-import { ShowDiscoverResponse } from '@/types'
+import { ShowDiscover } from '@/types'
 
 type Props = {
-	shows?: ShowDiscoverResponse[]
+	shows?: ShowDiscover[]
 }
 
 const Slideshow = ({ shows }: Props) => {

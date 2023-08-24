@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 import { api } from '@/api'
 
-import { ShowDiscoverResponse } from '@/types'
+import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
-const getData = async (): Promise<ShowDiscoverResponse | undefined> => {
+const getData = async (): Promise<ShowDiscover | undefined> => {
 	const movie = api
 		.get(
 			'/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc'

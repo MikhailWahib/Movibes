@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiFillInfoCircle } from 'react-icons/ai'
-import { ShowDiscoverResponse } from '@/types'
+import { ShowDiscover } from '@/types'
 import { api } from '@/api'
 
-const getShow = async (): Promise<ShowDiscoverResponse | undefined> => {
+const getShow = async (): Promise<ShowDiscover | undefined> => {
 	const show = api.get('/trending/movie/day?language=en-US').then((res) => {
 		return res.data.results[0]
 	})

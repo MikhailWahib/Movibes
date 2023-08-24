@@ -35,12 +35,6 @@ const Page = async ({ searchParams }: { searchParams: SearchParams }) => {
 		page || '1',
 		sort_by || 'popularity.desc'
 	)
-
-	console.log(
-		`/${category}/movie${
-			category === 'trending' ? '/day' : ''
-		}?&language=en-US&sort_by=${sort_by}&include_adult=false&page=${page}`
-	)
 	return (
 		<main>
 			<CategoryNav

@@ -3,11 +3,11 @@ import Link from 'next/link'
 import Billboard from '@/app/components/Billboard'
 import Slideshow from '@/app/components/Slideshow'
 
-import { ShowDiscoverResponse } from '@/types'
+import { ShowDiscover } from '@/types'
 
 import { api } from '@/api'
 
-const getMovies = async (): Promise<ShowDiscoverResponse[] | undefined> => {
+const getMovies = async (): Promise<ShowDiscover[] | undefined> => {
 	try {
 		const res = await api.get(
 			'/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc'
@@ -18,7 +18,7 @@ const getMovies = async (): Promise<ShowDiscoverResponse[] | undefined> => {
 	}
 }
 
-const getTvShows = async (): Promise<ShowDiscoverResponse[] | undefined> => {
+const getTvShows = async (): Promise<ShowDiscover[] | undefined> => {
 	try {
 		const res = await api.get(
 			'/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
@@ -29,7 +29,7 @@ const getTvShows = async (): Promise<ShowDiscoverResponse[] | undefined> => {
 	}
 }
 
-const getUpcomings = async (): Promise<ShowDiscoverResponse[] | undefined> => {
+const getUpcomings = async (): Promise<ShowDiscover[] | undefined> => {
 	try {
 		const res = await api.get('/movie/upcoming?language=en-US&page=1')
 		return res.data.results
