@@ -37,21 +37,21 @@ const Page = async ({ params, searchParams }: Props) => {
 	return (
 		<main>
 			<div className='w-full h-[20rem] md:h-[25rem] relative rounded-xl overflow-hidden'>
-				{show?.videos.results[0] ? (
+				{show?.videos.results.length! > 0 ? (
 					<VideoPlayer show={show} />
 				) : (
-					<div className=''>
+					<div>
 						<Image
 							src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/original${show?.backdrop_path}`}
 							fill
-							alt={''}
+							alt={`Poster of ${show?.name || show?.title}`}
 						/>
 					</div>
 				)}
 			</div>
 
 			<div className='flex justify-between gap-5 mt-5'>
-				<div className=''>
+				<div>
 					<h2 className='font-bold text-2xl inline-block text-[#3DD2CC] mr-2'>
 						{show?.title || show?.name}
 					</h2>

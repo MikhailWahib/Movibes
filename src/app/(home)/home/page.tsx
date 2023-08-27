@@ -50,7 +50,7 @@ export default async function Page() {
 				<div className='flex justify-between items-center'>
 					<h2>Movies</h2>
 					<Link
-						href='/movies'
+						href='/movies?category=discover'
 						className='text-sm text-[#666666] font-medium transition-colors hover:text-[#3DD2CC]'
 					>
 						See all
@@ -62,7 +62,7 @@ export default async function Page() {
 				<div className='flex justify-between items-center'>
 					<h2>Tv Shows</h2>
 					<Link
-						href='/tv-shows'
+						href='/tv-shows?category=discover'
 						className='text-sm text-[#666666] font-medium transition-colors hover:text-[#3DD2CC]'
 					>
 						See all
