@@ -41,8 +41,9 @@ const SearchResults = ({ query, setQuery }: Props) => {
 	if (!query) return null
 
 	return (
-		<div className='absolute top-[130%] bg-[#212121] w-full max-h-[85vh] overflow-y-scroll rounded-3xl z-40'>
-			<ul className='w-full h-full flex flex-col overflow-y-hidden'>
+		// <div className='absolute inset-0 w-full h-full bg-black/70 z-40'>
+		<div className='absolute inset-0 left-[5%] md:left-64 top-[5.5rem] w-[90%] md:w-[60%] max-h-[85vh] bg-[#212121] overflow-y-scroll rounded-3xl z-50'>
+			<ul className='w-full h-full flex flex-col'>
 				{data?.results.map((show) => (
 					<li
 						key={show.id}
@@ -54,8 +55,7 @@ const SearchResults = ({ query, setQuery }: Props) => {
 							setQuery('')
 						}}
 					>
-						{/* <Link href={`/show/${show.id}`}> */}
-						<div className='flex items-center gap-10'>
+						<div className='flex items-center gap-5 md:gap-10'>
 							<Image
 								src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/w500${show.poster_path}`}
 								width={75}
@@ -64,7 +64,7 @@ const SearchResults = ({ query, setQuery }: Props) => {
 								alt={`Poster for ${show.name || show.title}`}
 							/>
 							<div>
-								<h3 className='text-[#3DD2CC] text-xl'>
+								<h3 className='text-[#3DD2CC] text-md md:text-xl'>
 									{show.name || show.title}
 								</h3>
 								<p className='opacity-70 text-sm'>
@@ -84,11 +84,11 @@ const SearchResults = ({ query, setQuery }: Props) => {
 								/>
 							</div>
 						</div>
-						{/* </Link> */}
 					</li>
 				))}
 			</ul>
 		</div>
+		// </div>
 	)
 }
 

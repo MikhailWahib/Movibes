@@ -34,11 +34,19 @@ interface Props {
 const Page = async ({ params, searchParams }: Props) => {
 	const show = await getShow(params.id, searchParams.show_type)
 
+	const trailerSrc = show?.videos?.results?.filter((item: any) => {
+		return (
+			item.type === 'Trailer' &&
+			item.site === 'YouTube' &&
+			item.official === true
+		)
+	})[0]
+
 	return (
 		<main>
 			<div className='w-full h-[20rem] md:h-[25rem] relative rounded-xl overflow-hidden'>
-				{show?.videos.results.length! > 0 ? (
-					<VideoPlayer show={show} />
+				{trailerSrc ? (
+					<VideoPlayer show={show} trailerSrc={trailerSrc.key} />
 				) : (
 					<div>
 						<Image

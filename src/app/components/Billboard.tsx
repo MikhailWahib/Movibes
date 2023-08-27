@@ -2,7 +2,6 @@ import Link from 'next/link'
 import poster from '../../../public/1af325cb99775647a249f0209fdb69c6.png'
 import Image from 'next/image'
 
-import { BsFillPlayFill } from 'react-icons/bs'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { ShowDiscover } from '@/types'
 import { api } from '@/api'
@@ -18,7 +17,7 @@ const Billboard = async () => {
 	const show = await getShow()
 
 	return (
-		<div className='relative group h-[30vw] md:h-[25vw] flex w-full rounded-2xl overflow-hidden z-0'>
+		<div className='relative group h-[40vw] md:h-[25vw] flex w-full rounded-2xl overflow-hidden z-0'>
 			<div className='absolute inset-0'>
 				<Image
 					src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/original${show?.backdrop_path}`}
@@ -34,13 +33,7 @@ const Billboard = async () => {
 				</div>
 
 				<div className='flex gap-5'>
-					<Link href='/'>
-						<div className='flex justify-center items-center gap-2 h-8 w-20 bg-[#e8e8e819] backdrop-filter backdrop-blur-[2.5px] rounded-lg transition-all hover:opacity-60'>
-							<BsFillPlayFill />
-							Play
-						</div>
-					</Link>
-					<Link href='/'>
+					<Link href={`/show/${show?.id}?show_type=movie`}>
 						<div className='flex justify-center items-center gap-2 h-8 w-28 bg-[#e8e8e819] backdrop-filter backdrop-blur-[2.5px] rounded-lg transition-all hover:opacity-60'>
 							<AiFillInfoCircle />
 							More info

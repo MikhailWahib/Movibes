@@ -9,9 +9,9 @@ const Topbar = () => {
 		<div className='w-full flex items-center justify-between gap-[5vw]'>
 			<SidebarBtn />
 
-			<div className='relative w-full'>
-				<Search />
-			</div>
+			{/* <div className='relative w-full'> */}
+			<Search />
+			{/* </div> */}
 
 			<div className='flex gap-2'>
 				<Notifications />
