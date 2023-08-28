@@ -7,34 +7,19 @@ import { AiOutlineArrowDown } from 'react-icons/ai'
 
 const options = [
 	{
-		name: 'Popularity Desc',
+		name: 'Most Popular',
 		value: 'popularity.desc',
 		icon: AiOutlineArrowUp,
 	},
 	{
-		name: 'Popularity Asc',
-		value: 'popularity.asc',
-		icon: AiOutlineArrowDown,
-	},
-	{
-		name: 'Release Date Desc',
+		name: 'Latest',
 		value: 'release_date.desc',
 		icon: AiOutlineArrowUp,
 	},
 	{
-		name: 'Release Date Asc',
-		value: 'release_date.asc',
-		icon: AiOutlineArrowDown,
-	},
-	{
-		name: 'Vote Avg Desc',
+		name: 'Heighest Rated',
 		value: 'vote_average.desc',
 		icon: AiOutlineArrowUp,
-	},
-	{
-		name: 'Vote Avg Asc',
-		value: 'vote_average.asc',
-		icon: AiOutlineArrowDown,
 	},
 ]
 
