@@ -1,25 +1,19 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { AiOutlineArrowUp } from 'react-icons/ai'
-import { AiOutlineArrowDown } from 'react-icons/ai'
 
 const options = [
 	{
 		name: 'Most Popular',
 		value: 'popularity.desc',
-		icon: AiOutlineArrowUp,
 	},
 	{
 		name: 'Latest',
 		value: 'release_date.desc',
-		icon: AiOutlineArrowUp,
 	},
 	{
 		name: 'Heighest Rated',
 		value: 'vote_average.desc',
-		icon: AiOutlineArrowUp,
 	},
 ]
 
