@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import poster from '../../../public/poster.png'
 import starIcon from '../../../public/star.png'
 import Link from 'next/link'
 
@@ -21,7 +20,7 @@ const ShowCard = ({ show }: Props) => {
 					<Image
 						src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/w500${show.poster_path}`}
 						fill
-						alt='Poster'
+						alt={`Poster of ${show.title || show.name}`}
 					/>
 				) : (
 					<div className='absolute top-[40%] left-[30%] text-center'>
@@ -33,7 +32,7 @@ const ShowCard = ({ show }: Props) => {
 						src={starIcon}
 						width={18}
 						height={18}
-						alt='Star'
+						alt='Star Icon'
 						className='inline-block relative -top-[1.5px] mx-[5px]'
 					/>
 					<span className=''>{Math.round(show.vote_average * 10) / 10}/10</span>

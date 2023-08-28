@@ -1,10 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-import Link from 'next/link'
 import Image from 'next/image'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import axios from 'axios'
 
@@ -41,7 +40,6 @@ const SearchResults = ({ query, setQuery }: Props) => {
 	if (!query) return null
 
 	return (
-		// <div className='absolute inset-0 w-full h-full bg-black/70 z-40'>
 		<div className='absolute inset-0 left-[5%] md:left-64 top-[5.5rem] w-[90%] md:w-[60%] max-h-[85vh] bg-[#212121] overflow-y-scroll rounded-3xl z-50'>
 			<ul className='w-full h-full flex flex-col'>
 				{data?.results.map((show) => (
@@ -88,7 +86,6 @@ const SearchResults = ({ query, setQuery }: Props) => {
 				))}
 			</ul>
 		</div>
-		// </div>
 	)
 }
 
