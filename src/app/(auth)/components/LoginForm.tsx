@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string()
@@ -30,12 +31,12 @@ const LoginForm = () => {
 		actions: FormikHelpers<FormValues>
 	) => {
 		try {
-			const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/auth`, {
+			const res = await fetch('api/auth/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				mode: 'cors',
+				mode: 'same-origin',
 				credentials: 'include',
 				body: JSON.stringify(values),
 			})
@@ -57,7 +58,7 @@ const LoginForm = () => {
 			validationSchema={validationSchema}
 			onSubmit={handleSubmit}
 		>
-			<Form className='flex flex-col gap-7' noValidate>
+			<Form className='relative flex flex-col gap-7' noValidate>
 				<div className='relative'>
 					<Field
 						autoFocus
@@ -93,7 +94,6 @@ const LoginForm = () => {
 						<p className='absolute text-center w-full text-red-500'>{error}</p>
 					) : null}
 				</div>
-
 				<button
 					type='submit'
 					className='h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'

@@ -36,12 +36,12 @@ const SignupForm = () => {
 
 	const handleSubmit = async (values: FormValues) => {
 		try {
-			const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
+			const res = await fetch('api/auth/signup', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				mode: 'cors',
+				mode: 'same-origin',
 				credentials: 'include',
 				body: JSON.stringify(values),
 			})

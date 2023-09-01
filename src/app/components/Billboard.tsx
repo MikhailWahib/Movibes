@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import poster from '../../../public/1af325cb99775647a249f0209fdb69c6.png'
 import Image from 'next/image'
 
 import { AiFillInfoCircle } from 'react-icons/ai'
@@ -25,9 +24,9 @@ const Billboard = async () => {
 					alt='Poster'
 				></Image>
 			</div>
-			<div className='flex justify-between mr-[4%] mb-[2%] self-end w-full text-sm font-normal text-[#e8e8e8]'>
+			<div className='flex justify-between items-center mr-[4%] mb-[2%] self-end w-full text-sm font-normal text-[#e8e8e8]'>
 				<div className='relative'>
-					<div className='flex items-center h-full w-[120%] pl-3 bg-[#e8e8e819] backdrop-filter backdrop-blur-[10px] rounded-tr-lg rounded-br-lg text-[#3DD2CC] font-bold'>
+					<div className='flex items-center max-h-[50px] w-[30vw] pl-3 bg-[#e8e8e819] backdrop-filter backdrop-blur-[10px] rounded-tr-lg rounded-br-lg text-[#3DD2CC] text-xs md:text-lg font-bold text-ellipsis overflow-hidden'>
 						<h2>{show?.title || show?.name}</h2>
 					</div>
 				</div>

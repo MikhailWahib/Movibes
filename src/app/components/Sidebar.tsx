@@ -2,7 +2,7 @@
 import { useEffect, useState, useContext } from 'react'
 
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 import logo from '../../../public/movibesLogo.svg'
@@ -13,6 +13,7 @@ import { MdOutlineUpcoming } from 'react-icons/md'
 import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { SidebarContext } from '@/providers/SidebarContext'
+import axios from 'axios'
 
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
@@ -21,6 +22,7 @@ const listItems = [
 ]
 
 const Sidebar = () => {
+	const router = useRouter()
 	const path = usePathname()
 	const [activeRoute, setActiveRoute] = useState(path)
 
@@ -29,6 +31,17 @@ const Sidebar = () => {
 	useEffect(() => {
 		setActiveRoute(path)
 	}, [path])
+
+	const handleLogout = async () => {
+		axios
+			.get('/api/auth/logout')
+			.then((res) => {
+				router.push('/login')
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}
 	return (
 		<>
 			{/* BLACK SHADOW WHEN SIDEBAR IS OPEN ON MOBILE SCREENS */}
@@ -79,7 +92,7 @@ const Sidebar = () => {
 				</ul>
 				<button className='absolute bottom-10 flex items-center gap-2 ml-11 transition-all hover:opacity-70'>
 					<FiLogOut />
-					<span>Logout</span>
+					<button onClick={handleLogout}>Logout</button>
 				</button>
 			</div>
 		</>

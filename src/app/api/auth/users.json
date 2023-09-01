@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "email": "john@doe.com",
+    "password": "123456"
+  },
+  {
+    "id": 2,
+    "email": "john1@doe.com",
+    "password": "123456"
+  },
+  {
+    "id": 3,
+    "email": "john2@doe.com",
+    "password": "123456"
+  },
+  {
+    "id": 4,
+    "email": "cabk@gms.com",
+    "password": "11111111"
+  },
+  {
+    "id": 5,
+    "email": "acsn@gasm.com",
+    "password": "123456"
+  }
+]
