@@ -47,7 +47,7 @@ const SignupForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				localStorage.setItem('user', JSON.stringify(userData))
+				await userData
 				router.push('/')
 			} else {
 				setError(userData.message)

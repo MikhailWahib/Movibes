@@ -42,6 +42,7 @@ const LoginForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
+				await userData
 				router.push('/')
 			} else {
 				setError(userData.message)
