@@ -9,7 +9,7 @@ export async function POST(req: Request, res: Response) {
 	const { email, password, firstName, lastName } = await req.json()
 	const checkUser = users.find((user) => user.email === email)
 	if (checkUser) {
-		return NextResponse.json({ error: 'User already exists' })
+		return NextResponse.json({ message: 'User already exists' }, { status: 400 })
 	}
 	const user = {
 		id: users.length + 1,

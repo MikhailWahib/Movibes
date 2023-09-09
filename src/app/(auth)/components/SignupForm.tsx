@@ -82,7 +82,6 @@ const SignupForm = () => {
 					</div>
 					<div className='relative'>
 						<Field
-							autoFocus
 							type='lastName'
 							name='lastName'
 							placeholder='Last Name'
@@ -97,7 +96,6 @@ const SignupForm = () => {
 					</div>
 					<div className='relative'>
 						<Field
-							autoFocus
 							type='email'
 							name='email'
 							placeholder='Email'

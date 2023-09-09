@@ -90,7 +90,7 @@ const Sidebar = () => {
 						</li>
 					))}
 				</ul>
-				<button className='absolute bottom-10 flex items-center gap-2 ml-11 transition-all hover:opacity-70'>
+				<button onClick={handleLogout} className='absolute bottom-10 flex items-center gap-2 ml-11 transition-all hover:opacity-70'>
 					<FiLogOut />
 					<button onClick={handleLogout}>Logout</button>
 				</button>
