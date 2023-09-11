@@ -5,6 +5,7 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
 import Link from 'next/link'
+import LogoSpinner from '@/app/components/LogoSpinner'
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string()
@@ -21,6 +22,7 @@ interface FormValues {
 }
 
 const LoginForm = () => {
+	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState('')
 	const router = useRouter()
 
@@ -31,6 +33,7 @@ const LoginForm = () => {
 		actions: FormikHelpers<FormValues>
 	) => {
 		try {
+			setIsLoading(true)
 			const res = await fetch('api/auth/login', {
 				method: 'POST',
 				headers: {
@@ -42,8 +45,10 @@ const LoginForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				await userData
-				router.push('/')
+				setTimeout(() => {
+					setIsLoading(false)
+					router.push('/')
+				}, 1000)
 			} else {
 				setError(userData.message)
 			}
@@ -96,9 +101,9 @@ const LoginForm = () => {
 				</div>
 				<button
 					type='submit'
-					className='h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'
+					className='flex items-center justify-center h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'
 				>
-					Login
+					{isLoading ? <LogoSpinner height={40} width={40} /> : 'Login'}
 				</button>
 			</Form>
 		</Formik>

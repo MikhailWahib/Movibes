@@ -1,11 +1,20 @@
 import Image from 'next/image'
 import logo from '@/../public/Logo.svg'
 
-const LogoSpinner = () => {
+interface Props {
+	width?: number
+	height?: number
+}
+
+const LogoSpinner = ({ width, height }: Props) => {
 	return (
-		<div className='w-fit logo-spinner'>
-			<Image src={logo} width={80} height={80} alt='Movibes Logo' />
-		</div>
+		<Image
+			src={logo}
+			width={width || 80}
+			height={height || 80}
+			alt='Movibes Logo'
+			className='logo-spinner'
+		/>
 	)
 }
 

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
+import LogoSpinner from '@/app/components/LogoSpinner'
 
 const validationSchema = Yup.object().shape({
 	firstName: Yup.string().required('Please enter your first name'),
@@ -24,6 +25,7 @@ interface FormValues {
 }
 
 const SignupForm = () => {
+	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState('')
 	const router = useRouter()
 
@@ -47,7 +49,6 @@ const SignupForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				await userData
 				router.push('/')
 			} else {
 				setError(userData.message)
@@ -132,9 +133,9 @@ const SignupForm = () => {
 					</div>
 					<button
 						type='submit'
-						className='h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'
+						className='flex items-center justify-center h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'
 					>
-						Sign Up
+						{isLoading ? <LogoSpinner height={40} width={40} /> : 'Signup'}
 					</button>
 				</Form>
 			</Formik>
