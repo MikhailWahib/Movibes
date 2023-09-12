@@ -3,16 +3,18 @@ import Link from 'next/link'
 import LoginForm from '../components/LoginForm'
 import { useUser } from '@/hooks/useUser'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 const Login = () => {
 	const router = useRouter()
 	const { user } = useUser()
 	console.log('🚀 ~ file: page.tsx:8 ~ Login ~ user:', user)
 
-	if (user) {
-		router.push('/')
-		return null
-	}
+	useEffect(() => {
+		if (user) {
+			router.push('/')
+		}
+	}, [user])
 
 	return (
 		<div className='h-screen w-full z-20 bg-[#191919] flex-[45%] flex items-center justify-center text-center px-5 md:relative md:inset-0'>
