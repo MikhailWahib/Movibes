@@ -38,6 +38,8 @@ const SignupForm = () => {
 
 	const handleSubmit = async (values: FormValues) => {
 		try {
+			setError('')
+			setIsLoading(true)
 			const res = await fetch('api/auth/signup', {
 				method: 'POST',
 				headers: {
@@ -53,6 +55,7 @@ const SignupForm = () => {
 			} else {
 				setError(userData.message)
 			}
+			setIsLoading(false)
 		} catch (error) {
 			console.log(error)
 		}

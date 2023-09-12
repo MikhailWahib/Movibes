@@ -23,5 +23,15 @@
     "id": 5,
     "email": "acsn@gasm.com",
     "password": "123456"
+  },
+  {
+    "id": 6,
+    "email": "name@name.com",
+    "password": "123456"
+  },
+  {
+    "id": 7,
+    "email": "name1@name.com",
+    "password": "123456"
   }
 ]
