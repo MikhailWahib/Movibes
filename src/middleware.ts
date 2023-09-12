@@ -8,13 +8,13 @@ export function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL('/home', request.url))
 	}
 
-	if (
-		!jwt &&
-		request.nextUrl.pathname !== '/login' &&
-		request.nextUrl.pathname !== '/signup'
-	) {
-		return NextResponse.redirect(new URL('/login', request.url))
-	}
+	// if (
+	// 	!jwt &&
+	// 	request.nextUrl.pathname !== '/login' &&
+	// 	request.nextUrl.pathname !== '/signup'
+	// ) {
+	// 	return NextResponse.redirect(new URL('/login', request.url))
+	// }
 
 	// if (jwt && request.nextUrl.pathname === '/login') {
 	// 	return NextResponse.redirect(new URL('/home', request.url))
