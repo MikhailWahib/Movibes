@@ -38,6 +38,8 @@ const SignupForm = () => {
 
 	const handleSubmit = async (values: FormValues) => {
 		try {
+			setError('')
+			setIsLoading(true)
 			const res = await fetch('api/auth/signup', {
 				method: 'POST',
 				headers: {
@@ -53,6 +55,7 @@ const SignupForm = () => {
 			} else {
 				setError(userData.message)
 			}
+			setIsLoading(false)
 		} catch (error) {
 			console.log(error)
 		}
@@ -134,6 +137,7 @@ const SignupForm = () => {
 					<button
 						type='submit'
 						className='flex items-center justify-center h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'
+						disabled={isLoading}
 					>
 						{isLoading ? <LogoSpinner height={40} width={40} /> : 'Signup'}
 					</button>

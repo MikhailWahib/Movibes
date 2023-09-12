@@ -33,6 +33,7 @@ const LoginForm = () => {
 		actions: FormikHelpers<FormValues>
 	) => {
 		try {
+			setError('')
 			setIsLoading(true)
 			const res = await fetch('api/auth/login', {
 				method: 'POST',
@@ -45,13 +46,11 @@ const LoginForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				setTimeout(() => {
-					setIsLoading(false)
-					router.push('/')
-				}, 1000)
+				router.push('/')
 			} else {
 				setError(userData.message)
 			}
+			setIsLoading(false)
 		} catch (error) {
 			console.error(error)
 		}
@@ -102,6 +101,7 @@ const LoginForm = () => {
 				<button
 					type='submit'
 					className='flex items-center justify-center h-14 mt-10 text-[#191919] text-xl font-semibold bg-[#FEFEFE] rounded-2xl transition-all hover:opacity-60'
+					disabled={isLoading}
 				>
 					{isLoading ? <LogoSpinner height={40} width={40} /> : 'Login'}
 				</button>
