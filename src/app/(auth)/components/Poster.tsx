@@ -5,7 +5,7 @@ import { api } from '@/api'
 import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
-export const revalidate = 60
+export const revalidate = 'force-dynamic'
 
 const getData = async (): Promise<ShowDiscover | undefined> => {
 	const movie = api
