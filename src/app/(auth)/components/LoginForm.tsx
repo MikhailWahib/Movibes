@@ -45,7 +45,7 @@ const LoginForm = () => {
 			const userData = await res.json()
 			if (res.ok) {
 				// router.refresh()
-				router.replace('/home')
+				router.push('/home')
 			} else {
 				setError(userData.message)
 			}
