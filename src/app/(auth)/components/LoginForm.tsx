@@ -45,13 +45,12 @@ const LoginForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				setTimeout(() => {
-					setIsLoading(false)
-					router.push('/')
-				}, 1000)
+				router.refresh()
+				router.replace('/home')
 			} else {
 				setError(userData.message)
 			}
+			setIsLoading(false)
 		} catch (error) {
 			console.error(error)
 		}
