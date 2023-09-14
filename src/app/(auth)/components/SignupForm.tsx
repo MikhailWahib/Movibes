@@ -51,7 +51,7 @@ const SignupForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				router.replace('/')
+				router.push('/home')
 			} else {
 				setError(userData.message)
 			}

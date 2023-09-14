@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
-import Link from 'next/link'
 import LogoSpinner from '@/app/components/LogoSpinner'
 
 const validationSchema = Yup.object().shape({
@@ -46,7 +45,7 @@ const LoginForm = () => {
 			})
 			const userData = await res.json()
 			if (res.ok) {
-				router.replace('/')
+				router.push('/home')
 			} else {
 				setError(userData.message)
 			}
