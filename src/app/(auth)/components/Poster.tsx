@@ -5,7 +5,7 @@ import { api } from '@/api'
 import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
-export const revalidate = 'force-cache'
+export const revalidate = 0
 
 const getData = async (): Promise<ShowDiscover | undefined> => {
 	const movie = api
