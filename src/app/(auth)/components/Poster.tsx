@@ -5,23 +5,37 @@ import { api } from '@/api'
 import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
+export const revalidate = 10
+
 const getData = async (): Promise<ShowDiscover | undefined> => {
-	const cache_bust = Math.random()
-	console.log(
-		'🚀 ~ file: Poster.tsx:12 ~ constcache_bust=setInterval ~ cache_bust:',
-		cache_bust
+	const res = await fetch(
+		`${process.env.API_URL}/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc`,
+		{
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${process.env.API_TOKEN}`,
+			},
+		}
 	)
-	const movie = api
-		.get(
-			`/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&cache_bust=${cache_bust}`
-		)
-		.then((res) => {
-			return res.data.results[
-				Math.floor(Math.random() * res.data.results.length)
-			]
-		})
-	return movie
+	const movies = await res.json()
+	// console.log('🚀 ~ file: Poster.tsx:13 ~ getData ~ movie:', movies)
+	return movies.results[Math.floor(Math.random() * movies.results.length)]
 }
+
+// const getData = async (): Promise<ShowDiscover | undefined> => {
+// 	const cache_bust = Math.random()
+// 	const movie = api
+// 		.get(
+// 			`/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&cache_bust=${cache_bust}`
+// 		)
+// 		.then((res) => {
+// 			return res.data.results[
+// 				Math.floor(Math.random() * res.data.results.length)
+// 			]
+// 		})
+// 	return movie
+// }
 
 const Poster = async () => {
 	const movie = await getData()
