@@ -6,9 +6,11 @@ import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
 const getData = async (): Promise<ShowDiscover | undefined> => {
-	const cache_bust = setInterval(() => {
-		return Math.random()
-	}, 1000)
+	const cache_bust = Math.random()
+	console.log(
+		'🚀 ~ file: Poster.tsx:12 ~ constcache_bust=setInterval ~ cache_bust:',
+		cache_bust
+	)
 	const movie = api
 		.get(
 			`/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&cache_bust=${cache_bust}`
