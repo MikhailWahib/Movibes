@@ -5,14 +5,14 @@ import Slideshow from '@/app/components/Slideshow'
 
 import { ShowDiscover } from '@/types'
 
-import { api } from '@/api'
+import { getData } from '@/api'
 
 const getMovies = async (): Promise<ShowDiscover[] | undefined> => {
 	try {
-		const res = await api.get(
+		const res = await getData(
 			'/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc'
 		)
-		return res.data.results
+		return res.results
 	} catch (error) {
 		console.log(error)
 	}
@@ -20,10 +20,10 @@ const getMovies = async (): Promise<ShowDiscover[] | undefined> => {
 
 const getTvShows = async (): Promise<ShowDiscover[] | undefined> => {
 	try {
-		const res = await api.get(
+		const res = await getData(
 			'/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
 		)
-		return res.data.results
+		return res.results
 	} catch (error) {
 		console.log(error)
 	}
@@ -31,8 +31,8 @@ const getTvShows = async (): Promise<ShowDiscover[] | undefined> => {
 
 const getUpcomings = async (): Promise<ShowDiscover[] | undefined> => {
 	try {
-		const res = await api.get('/movie/upcoming?language=en-US&page=1')
-		return res.data.results
+		const res = await getData('/movie/upcoming?language=en-US&page=1')
+		return res.results
 	} catch (error) {
 		console.log(error)
 	}

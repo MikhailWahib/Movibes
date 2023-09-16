@@ -3,11 +3,13 @@ import Image from 'next/image'
 
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { ShowDiscover } from '@/types'
-import { api } from '@/api'
+import { getData } from '@/api'
 
 const getShow = async (): Promise<ShowDiscover | undefined> => {
-	const show = api.get('/trending/movie/day?language=en-US').then((res) => {
-		return res.data.results[0]
+	const show = getData('/trending/movie/day?language=en-US', {
+		next: { revalidate: 86400 },
+	}).then((res) => {
+		return res.results[0]
 	})
 	return show
 }

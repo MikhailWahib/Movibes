@@ -1,25 +1,24 @@
 import Image from 'next/image'
 
-import { api } from '@/api'
+import { getData } from '@/api'
 
 import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
 
-const getData = async (): Promise<ShowDiscover | undefined> => {
-	const movie = api
-		.get(
-			'/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc'
-		)
-		.then((res) => {
-			return res.data.results[
-				Math.floor(Math.random() * res.data.results.length)
-			]
-		})
+const getMovie = async (): Promise<ShowDiscover | undefined> => {
+	const movie = getData(
+		'/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc',
+		{
+			next: { revalidate: 3600 },
+		}
+	).then((res) => {
+		return res.results[Math.floor(Math.random() * res.results.length)]
+	})
 	return movie
 }
 
 const Poster = async () => {
-	const movie = await getData()
+	const movie = await getMovie()
 	return (
 		<div
 			className='hidden md:block relative bg-cover bg-[100% 100%] bg-no-repeat h-screen flex-[55%]'
