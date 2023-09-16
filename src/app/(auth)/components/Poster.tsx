@@ -1,11 +1,7 @@
 import Image from 'next/image'
 
-import { api } from '@/api'
-
 import { ShowDiscover } from '@/types'
 import { moviesGenresHash } from '@/constants'
-
-// export const revalidate = 10
 
 const getData = async (): Promise<ShowDiscover | undefined> => {
 	const res = await fetch(
@@ -16,41 +12,18 @@ const getData = async (): Promise<ShowDiscover | undefined> => {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${process.env.API_TOKEN}`,
 			},
-			next: { revalidate: 10 },
+			next: { revalidate: 60 },
 		}
 	)
 	const movies = await res.json()
-	// console.log('🚀 ~ file: Poster.tsx:13 ~ getData ~ movie:', movies)
 	return movies.results[Math.floor(Math.random() * movies.results.length)]
 }
-
-// const getData = async (): Promise<ShowDiscover | undefined> => {
-// 	const cache_bust = Math.random()
-// 	const movie = api
-// 		.get(
-// 			`/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&cache_bust=${cache_bust}`
-// 		)
-// 		.then((res) => {
-// 			return res.data.results[
-// 				Math.floor(Math.random() * res.data.results.length)
-// 			]
-// 		})
-// 	return movie
-// }
 
 const Poster = async () => {
 	const movie = await getData()
 	return (
-		<div
-			className='hidden md:block relative h-screen flex-[55%]'
-			// style={{
-			// 	backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.poster_path})`,
-			// 	backgroundRepeat: 'no-repeat',
-			// 	backgroundSize: '100% 100%',
-			// 	backgroundPosition: '100% 100%',
-			// }}
-		>
-			<div className=''>
+		<div className='hidden md:block relative h-screen flex-[55%]'>
+			<div>
 				<Image
 					src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/original${movie?.poster_path}`}
 					fill
