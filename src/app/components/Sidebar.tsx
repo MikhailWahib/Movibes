@@ -9,11 +9,9 @@ import logo from '../../../public/movibesLogo.svg'
 
 import { AiOutlineHome } from 'react-icons/ai'
 import { BiCameraMovie } from 'react-icons/bi'
-import { MdOutlineUpcoming } from 'react-icons/md'
 import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { SidebarContext } from '@/providers/SidebarContext'
-import axios from 'axios'
 
 const listItems = [
 	{ name: 'Home', href: '/home', icon: AiOutlineHome },
@@ -33,8 +31,7 @@ const Sidebar = () => {
 	}, [path])
 
 	const handleLogout = async () => {
-		axios
-			.get('/api/auth/logout')
+		fetch('/api/auth/logout')
 			.then((res) => {
 				router.push('/login')
 			})
@@ -90,10 +87,15 @@ const Sidebar = () => {
 						</li>
 					))}
 				</ul>
-				<button onClick={handleLogout} className='absolute bottom-10 flex items-center gap-2 ml-11 transition-all hover:opacity-70'>
-					<FiLogOut />
-					<button onClick={handleLogout}>Logout</button>
-				</button>
+				<>
+					<button
+						onClick={handleLogout}
+						className='absolute bottom-10 flex items-center gap-2 ml-11 transition-all hover:opacity-70'
+					>
+						<FiLogOut />
+						Logout
+					</button>
+				</>
 			</div>
 		</>
 	)

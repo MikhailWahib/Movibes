@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import starIcon from '@/../public/star.png'
 
-import { api } from '@/api'
+import { getData } from '@/api'
 
 import VideoPlayer from '@/app/components/VideoPlayer'
 
@@ -13,10 +13,10 @@ const getShow = async (
 	showType: string
 ): Promise<ShowDetails | undefined> => {
 	try {
-		const res = await api.get(
-			`${showType}/${id}?append_to_response=credits,videos&language=en-US`
+		const res = await getData(
+			`/${showType}/${id}?append_to_response=credits,videos&language=en-US`
 		)
-		return res.data
+		return res
 	} catch (error) {
 		console.log(error)
 	}

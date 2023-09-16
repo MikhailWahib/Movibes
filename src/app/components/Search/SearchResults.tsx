@@ -5,8 +5,6 @@ import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
 
-import axios from 'axios'
-
 import { SeachResponse } from '@/types'
 
 import starIcon from '@/../public/star.png'
@@ -26,9 +24,9 @@ const SearchResults = ({ query, setQuery }: Props) => {
 	const getSearchResults = async (query: string): Promise<void> => {
 		try {
 			setLoading(true)
-			const res = await axios.get(`/api/search/${query}`)
-			const data = await res.data.data
-			setData(data)
+			const res = await fetch(`/api/search/${query}`)
+			const results = await res.json()
+			setData(results.data)
 			setLoading(false)
 		} catch (error) {
 			console.log(error)

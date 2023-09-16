@@ -1,4 +1,4 @@
-import { api } from '@/api'
+import { getData } from '@/api'
 import ShowCard from '@/app/components/ShowCard'
 import { ApiDiscoverResponse } from '@/types'
 import CategoryNav from '../../components/CategoryNav'
@@ -9,15 +9,11 @@ const getMovies = async (
 	page: string,
 	sort_by?: string
 ): Promise<ApiDiscoverResponse> => {
-	const response = api
-		.get(
-			`/${category}/tv${
-				category === 'trending' ? '/day' : ''
-			}?include_adult=false&include_null_first_air_dates=false&language=en-US&sort_by=${sort_by}&page=${page}`
-		)
-		.then((res) => {
-			return res.data
-		})
+	const response = getData(
+		`/${category}/tv${
+			category === 'trending' ? '/day' : ''
+		}?include_adult=false&include_null_first_air_dates=false&language=en-US&sort_by=${sort_by}&page=${page}`
+	)
 	return response
 }
 
