@@ -9,7 +9,6 @@ import logo from '../../../public/movibesLogo.svg'
 
 import { AiOutlineHome } from 'react-icons/ai'
 import { BiCameraMovie } from 'react-icons/bi'
-import { MdOutlineUpcoming } from 'react-icons/md'
 import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { SidebarContext } from '@/providers/SidebarContext'
@@ -50,7 +49,7 @@ const Sidebar = () => {
 				onClick={() => setOpenSidebar(false)}
 			></div>
 
-			<div
+			<aside
 				className={`${
 					openSidebar ? 'translate-x-0' : '-translate-x-[100%]'
 				} fixed inset-0 md:translate-x-0  h-full w-56 md:rounded-tr-[45px] md:rounded-br-[45px] bg-[#212121] text-lg font-medium text-[#666] z-50 transition-all`}
@@ -95,7 +94,7 @@ const Sidebar = () => {
 					<FiLogOut />
 					Logout
 				</button>
-			</div>
+			</aside>
 		</>
 	)
 }

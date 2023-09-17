@@ -46,7 +46,7 @@ export default async function Page() {
 	return (
 		<>
 			<Billboard />
-			<div className='mt-10'>
+			<section className='mt-10'>
 				<div className='flex justify-between items-center'>
 					<h2>Movies</h2>
 					<Link
@@ -57,8 +57,8 @@ export default async function Page() {
 					</Link>
 				</div>
 				<Slideshow shows={movies!} />
-			</div>
-			<div>
+			</section>
+			<section>
 				<div className='flex justify-between items-center'>
 					<h2>Tv Shows</h2>
 					<Link
@@ -69,13 +69,13 @@ export default async function Page() {
 					</Link>
 				</div>
 				<Slideshow shows={tvShows!} />
-			</div>
-			<div>
+			</section>
+			<section>
 				<div className='flex justify-between items-center'>
 					<h2>Upcoming</h2>
 				</div>
 				<Slideshow shows={upcomings} />
-			</div>
+			</section>
 		</>
 	)
 }
