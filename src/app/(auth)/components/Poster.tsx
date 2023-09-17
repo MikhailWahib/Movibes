@@ -12,7 +12,7 @@ const getData = async (): Promise<ShowDiscover | undefined> => {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${process.env.API_TOKEN}`,
 			},
-			next: { revalidate: 60 },
+			next: { revalidate: 10 },
 		}
 	)
 	const movies = await res.json()
@@ -22,14 +22,15 @@ const getData = async (): Promise<ShowDiscover | undefined> => {
 const Poster = async () => {
 	const movie = await getData()
 	return (
-		<div className='hidden md:block relative h-screen flex-[55%]'>
-			<div>
-				<Image
-					src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/original${movie?.poster_path}`}
-					fill
-					alt={`${movie?.title || movie?.name} Poster`}
-				/>
-			</div>
+		<div
+			className='hidden md:block relative bg-cover bg-[100% 100%] bg-no-repeat h-screen flex-[55%]'
+			style={{
+				backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.poster_path})`,
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: '100% 100%',
+				backgroundPosition: '100% 100%',
+			}}
+		>
 			<div className='absolute flex w-full bottom-0 h-[210px] pt-6 px-7 bg-[#19191908] backdrop-filter backdrop-blur-[2px] transition-all duration-500 '>
 				<div className='flex-1'>
 					<h2 className='text-4xl font-semibold mb-1 text-yellow-500'>
