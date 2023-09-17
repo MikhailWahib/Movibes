@@ -6,7 +6,7 @@ import { RxAvatar } from 'react-icons/rx'
 
 const Topbar = () => {
 	return (
-		<div className='w-full flex items-center justify-between gap-[5vw]'>
+		<header className='w-full flex items-center justify-between gap-[5vw]'>
 			<SidebarBtn />
 
 			{/* <div className='relative w-full'> */}
@@ -19,7 +19,7 @@ const Topbar = () => {
 					<RxAvatar size='fill' opacity={0.8} />
 				</div>
 			</div>
-		</div>
+		</header>
 	)
 }
 

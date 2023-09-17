@@ -11,6 +11,7 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { BiCameraMovie } from 'react-icons/bi'
 import { BiSlideshow } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
+
 import { SidebarContext } from '@/providers/SidebarContext'
 
 const listItems = [
@@ -59,34 +60,36 @@ const Sidebar = () => {
 						<Image src={logo} height={118} width={118} alt='Movibes Logo' />
 					</Link>
 				</div>
-				<ul>
-					{listItems.map((item, i) => (
-						<li
-							key={i}
-							className={`h-20 pl-11 relative transition-all hover:text-[#3DD2CC] ${
-								item.href.startsWith(activeRoute)
-									? 'bg-[#3dd2cc66] text-[#3DD2CC]'
-									: 'bg-none'
-							}`}
-							onClick={() => setOpenSidebar(false)}
-						>
-							<Link
-								href={item.href}
-								className={`h-full w-full flex items-center ${
-									item.href.startsWith(activeRoute) &&
-									'after:absolute after:right-0 after:h-full after:w-1 after:bg-[#3dd2ccbf]'
+				<nav>
+					<ul>
+						{listItems.map((item, i) => (
+							<li
+								key={i}
+								className={`h-20 relative transition-all hover:text-[#3DD2CC] ${
+									item.href.startsWith(activeRoute)
+										? 'bg-[#3dd2cc66] text-[#3DD2CC]'
+										: 'bg-none'
 								}`}
+								onClick={() => setOpenSidebar(false)}
 							>
-								<div className='flex items-center gap-2'>
-									<div>
-										<item.icon size={20} />
+								<Link
+									href={item.href}
+									className={`h-full w-full flex items-center pl-11  ${
+										item.href.startsWith(activeRoute) &&
+										'after:absolute after:right-0 after:h-full after:w-1 after:bg-[#3dd2ccbf]'
+									}`}
+								>
+									<div className='flex items-center gap-2'>
+										<div>
+											<item.icon size={20} />
+										</div>
+										{item.name}
 									</div>
-									{item.name}
-								</div>
-							</Link>
-						</li>
-					))}
-				</ul>
+								</Link>
+							</li>
+						))}
+					</ul>
+				</nav>
 				<button
 					onClick={handleLogout}
 					className='absolute bottom-10 flex items-center gap-2 ml-11 transition-all hover:opacity-70'
