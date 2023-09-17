@@ -30,4 +30,6 @@ Movibes is built using cutting-edge technologies to provide you with the best mo
 
 - **TypeScript**: We use TypeScript to enhance code quality, offering robust and reliable code.
 
+**Tailwind CSS**: We've crafted the stunning visual experience of Movibes using Tailwindcss
+
 Explore the world of cinema with Movibes today!
