@@ -16,6 +16,10 @@ Check out the live demo of Movibes **[here](https://movibes-mw.vercel.app)**.
 
 - **Single Page Application (SPA)**: Movibes leverages the power of single-page application architecture to ensure smooth and uninterrupted browsing.
 
+## Data Source
+
+Movibes relies on the [TMDB API](https://www.themoviedb.org/documentation/api) as its primary data source. The TMDB API provides comprehensive movie and TV show information, including details, images, and trailers.
+
 ## Tech Stack
 
 Movibes is built using cutting-edge technologies to provide you with the best movie exploration experience:
