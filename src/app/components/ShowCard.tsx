@@ -3,7 +3,7 @@ import starIcon from '../../../public/star.png'
 import Link from 'next/link'
 
 import { ShowDiscover } from '@/types'
-import { moviesGenresHash } from '@/constants'
+import { moviesGenresMapping } from '@/constants'
 
 type Props = {
 	show: ShowDiscover
@@ -49,7 +49,9 @@ const ShowCard = ({ show }: Props) => {
 							{show?.genre_ids
 								.map(
 									(genre) =>
-										moviesGenresHash[genre as keyof typeof moviesGenresHash]
+										moviesGenresMapping[
+											genre as keyof typeof moviesGenresMapping
+										]
 								)
 								.join(', ')}
 						</p>

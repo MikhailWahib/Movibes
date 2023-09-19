@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { getData } from '@/api'
 
 import { ShowDiscover } from '@/types'
-import { moviesGenresHash } from '@/constants'
+import { moviesGenresMapping } from '@/constants'
 
 const getMovie = async (): Promise<ShowDiscover | undefined> => {
 	const movie = getData(
@@ -38,7 +38,7 @@ const Poster = async () => {
 						{movie?.genre_ids
 							.map(
 								(genre) =>
-									moviesGenresHash[genre as keyof typeof moviesGenresHash]
+									moviesGenresMapping[genre as keyof typeof moviesGenresMapping]
 							)
 							.join(', ')}
 					</p>
