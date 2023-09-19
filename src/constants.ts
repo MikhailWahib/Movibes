@@ -1,4 +1,4 @@
-export const moviesGenresHash = {
+export const moviesGenresMapping = {
 	28: 'Action',
 	12: 'Adventure',
 	16: 'Animation',
@@ -20,7 +20,7 @@ export const moviesGenresHash = {
 	37: 'Western',
 }
 
-export const tvGenresHash = {
+export const tvGenresMapping = {
 	10759: 'Action & Adventure',
 	16: 'Animation',
 	35: 'Comedy',
