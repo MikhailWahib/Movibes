@@ -137,7 +137,7 @@ const LoginForm = () => {
 					className='flex items-center justify-center h-14 text-lg bg-transparent border text-white rounded-2xl transition-all hover:opacity-60'
 					disabled={isLoading}
 				>
-					Login as Guest
+					Continue as Guest
 				</button>
 			</Form>
 		</Formik>
