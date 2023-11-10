@@ -27,10 +27,7 @@ const LoginForm = () => {
 
 	const initialValues: FormValues = { email: "", password: "" }
 
-	const handleSubmit = async (
-		values: FormValues,
-		actions: FormikHelpers<FormValues>
-	) => {
+	const handleLogin = async (values: FormValues) => {
 		try {
 			setError("")
 			setIsLoading(true)
@@ -56,38 +53,18 @@ const LoginForm = () => {
 	}
 
 	const handleGuestLogin = async () => {
-		try {
-			setError("")
-			setIsLoading(true)
-			const res = await fetch("api/auth/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				mode: "same-origin",
-				credentials: "include",
-				body: JSON.stringify({
-					email: "john@doe.com",
-					password: "123456",
-				}),
-			})
-			const userData = await res.json()
-			if (res.ok) {
-				router.push("/home")
-			} else {
-				setError(userData.message)
-			}
-			setIsLoading(false)
-		} catch (error) {
-			console.error(error)
+		const values = {
+			email: "john@doe.com",
+			password: "123456",
 		}
+		handleLogin(values)
 	}
 
 	return (
 		<Formik
 			initialValues={initialValues}
 			validationSchema={validationSchema}
-			onSubmit={handleSubmit}
+			onSubmit={handleLogin}
 		>
 			<Form className='relative flex flex-col gap-7' noValidate>
 				<div className='relative'>
