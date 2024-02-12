@@ -20,12 +20,12 @@ export async function POST(req: Request, res: Response) {
 		email,
 		password,
 	}
-	users.push(user)
 	// update users json file
-	fs.writeFileSync(
-		path.join(process.cwd(), "src", "app", "api", "auth", "users.json"),
-		JSON.stringify(users, null, 2)
-	)
+	console.log(process.cwd()),
+		fs.writeFileSync(
+			path.join(process.cwd(), "src/app/api/auth/users.json"),
+			JSON.stringify(users.concat(user), null, 2)
+		)
 	generateToken(user)
 	return NextResponse.json({ data: user })
 }
