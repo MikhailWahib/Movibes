@@ -8,7 +8,7 @@ Check out the live demo of Movibes **[here](https://movibes-mw.vercel.app)**.
 
 ## Features
 
-- **Simulated Authentication**: Experience the feel of a real movie platform with our simulated login and signup features, all managed using a `users.json` file.
+- **Authentication**: Experience the feel of a real movie platform with our login and signup features.
 
 - **Server-Side Rendering (SSR)**: Enjoy fast and optimized loading times thanks to our server-side rendering, providing a seamless user experience.
 
