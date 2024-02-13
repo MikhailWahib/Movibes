@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server"
-import users from "../users.json"
 import { generateToken } from "../../lib/generateToken"
 import { sql } from "@vercel/postgres"
 
