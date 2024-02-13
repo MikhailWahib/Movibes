@@ -1,31 +1,25 @@
 import { NextResponse } from "next/server"
-import { cookies } from "next/headers"
-import jwt from "jsonwebtoken"
-import users from "../users.json"
-import fs from "fs"
-import path from "path"
 import { generateToken } from "../../lib/generateToken"
+import { sql } from "@vercel/postgres"
 
 export async function POST(req: Request, res: Response) {
 	const { email, password, firstName, lastName } = await req.json()
-	const checkUser = users.find((user) => user.email === email)
-	if (checkUser) {
+
+	const { rows: rowsExists } =
+		await sql`SELECT * FROM users WHERE email=${email};`
+
+	if (rowsExists.length > 0) {
 		return NextResponse.json(
 			{ message: "User already exists" },
-			{ status: 400 }
+			{ status: 409 }
 		)
 	}
-	const user = {
-		id: users.length + 1,
-		email,
-		password,
-	}
-	// update users json file
-	console.log(process.cwd()),
-		fs.writeFileSync(
-			path.join(process.cwd(), "src/app/api/auth/users.json"),
-			JSON.stringify(users.concat(user), null, 2)
-		)
+
+	const { rows } =
+		await sql`INSERT INTO users (first_name, last_name, email, password) VALUES (${firstName}, ${lastName}, ${email}, ${password}) RETURNING *;`
+
+	const user = rows[0] as any
+
 	generateToken(user)
 	return NextResponse.json({ data: user })
 }
