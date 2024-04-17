@@ -11,7 +11,7 @@ type Props = {
 
 const ShowCard = ({ show }: Props) => {
 	// IF SHOW HAS 'TITLE' THEN IT'S A MOVIE, IF 'NAME' IT'S A TV - "FROM THE API"
-	const href = `/show/${show.id}?show_type=${show.title ? 'movie' : 'tv'}`
+	const href = `/${show.title ? 'movie' : 'tv'}/${show.id}`
 
 	return (
 		<div className='group relative h-52 min-w-[9rem] sm:min-w-[9.5rem] w-full max-w-[13rem] rounded-lg overflow-hidden'>

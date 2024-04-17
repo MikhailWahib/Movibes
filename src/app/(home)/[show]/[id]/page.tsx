@@ -1,11 +1,7 @@
 import Image from 'next/image'
-
 import starIcon from '@/../public/star.png'
-
 import { getData } from '@/api'
-
 import VideoPlayer from '@/app/components/VideoPlayer'
-
 import { ShowDetails } from '@/types'
 
 const getShow = async (
@@ -24,15 +20,13 @@ const getShow = async (
 
 interface Props {
 	params: {
-		id: number
-	}
-	searchParams: {
-		show_type: string
+		id: number,
+		show: 'movie' | 'tv'
 	}
 }
 
-const Page = async ({ params, searchParams }: Props) => {
-	const show = await getShow(params.id, searchParams.show_type)
+const Page = async ({ params }: Props) => {
+	const show = await getShow(params.id, params.show)
 
 	const trailerSrc = show?.videos?.results?.filter((item: any) => {
 		return (
